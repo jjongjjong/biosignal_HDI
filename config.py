@@ -1,6 +1,7 @@
-
+import os
 def config_list():
-    
+    save_path = '/home/jjong/jjong/workplace/datathon_2019/save' if os.name=='posix'\
+        else 'E:\Jupyter_notebook\JJH\workplace\Datathon_2019\save'
     device = 'cuda:0'
     time_point = 3
     channel_n = 5
@@ -13,36 +14,39 @@ def config_list():
     
     return [
     #'''---------------------3M------------------'''
-    # {
-    # 'time_point':3,
-    # 'device':device,
-    # 'waves':['abp'],
-    # 'windows':[abp_window],
-    # 'channel_n':channel_n,
-    # 'lr':lr,
-    # 'sqi':sqi
-    # }
-    # ,    
-    #     {
-    # 'time_point':3,
-    # 'device':device,
-    # 'waves':['abp','eeg'],
-    # 'windows':[abp_window,eeg_window],
-    # 'channel_n':channel_n,
-    # 'lr':lr,
-    # 'sqi':sqi
-    # }
-    # ,
-    #     {
-    # 'time_point':3,
-    # 'device':device,
-    # 'waves':['abp','ecg'],
-    # 'windows':[abp_window,ecg_window],
-    # 'channel_n':channel_n,
-    # 'lr':lr,
-    # 'sqi':sqi
-    # }
-    # ,
+    {
+    'time_point':3,
+    'device':device,
+    'waves':['abp'],
+    'windows':[abp_window],
+    'channel_n':channel_n,
+    'lr':lr,
+    'sqi':sqi,
+    'save_path':save_path
+    }
+    ,
+        {
+    'time_point':3,
+    'device':device,
+    'waves':['abp','eeg'],
+    'windows':[abp_window,eeg_window],
+    'channel_n':channel_n,
+    'lr':lr,
+    'sqi':sqi,
+    'save_path':save_path
+    }
+    ,
+        {
+    'time_point':3,
+    'device':device,
+    'waves':['abp','ecg'],
+    'windows':[abp_window,ecg_window],
+    'channel_n':channel_n,
+    'lr':lr,
+    'sqi':sqi,
+    'save_path':save_path
+    }
+    ,
         {
     'time_point':3,
     'device':device,
@@ -50,7 +54,8 @@ def config_list():
     'windows':[ecg_window,abp_window,eeg_window],
     'channel_n':channel_n,
     'lr':lr,
-    'sqi':sqi
+    'sqi':sqi,
+    'save_path':save_path
     }
     ,
 
@@ -62,7 +67,8 @@ def config_list():
     'windows':[abp_window],
     'channel_n':channel_n,
     'lr':lr,
-    'sqi':sqi
+    'sqi':sqi,
+    'save_path':save_path
     }
     ,    
         {
@@ -72,7 +78,8 @@ def config_list():
     'windows':[abp_window,eeg_window],
     'channel_n':channel_n,
     'lr':lr,
-    'sqi':sqi
+    'sqi':sqi,
+    'save_path':save_path
     }
     ,
         {
@@ -82,7 +89,8 @@ def config_list():
     'windows':[abp_window,ecg_window],
     'channel_n':channel_n,
     'lr':lr,
-    'sqi':sqi
+    'sqi':sqi,
+    'save_path':save_path
     }
     ,
         {
@@ -92,7 +100,8 @@ def config_list():
     'windows':[ecg_window,abp_window,eeg_window],
     'channel_n':channel_n,
     'lr':lr,
-    'sqi':sqi
+    'sqi':sqi,
+    'save_path':save_path
     }
     ,
       #'''-------------------10M--------------------'''
@@ -103,7 +112,8 @@ def config_list():
     'windows':[abp_window],
     'channel_n':channel_n,
     'lr':lr,
-    'sqi':sqi
+    'sqi':sqi,
+    'save_path':save_path
     }
     ,    
         {
@@ -113,7 +123,8 @@ def config_list():
     'windows':[abp_window,eeg_window],
     'channel_n':channel_n,
     'lr':lr,
-    'sqi':sqi
+    'sqi':sqi,
+    'save_path':save_path
     }
     ,
         {
@@ -123,7 +134,8 @@ def config_list():
     'windows':[abp_window,ecg_window],
     'channel_n':channel_n,
     'lr':lr,
-    'sqi':sqi
+    'sqi':sqi,
+    'save_path':save_path
     }
     ,
         {
@@ -133,7 +145,8 @@ def config_list():
     'windows':[ecg_window,abp_window,eeg_window],
     'channel_n':channel_n,
     'lr':lr,
-    'sqi':sqi
+    'sqi':sqi,
+    'save_path':save_path
     }
     ,
 
@@ -145,7 +158,8 @@ def config_list():
     'windows':[abp_window],
     'channel_n':channel_n,
     'lr':lr,
-    'sqi':sqi
+    'sqi':sqi,
+    'save_path':save_path
     }
     ,    
         {
@@ -155,7 +169,8 @@ def config_list():
     'windows':[abp_window,eeg_window],
     'channel_n':channel_n,
     'lr':lr,
-    'sqi':sqi
+    'sqi':sqi,
+    'save_path':save_path
     }
     ,
         {
@@ -165,7 +180,8 @@ def config_list():
     'windows':[abp_window,ecg_window],
     'channel_n':channel_n,
     'lr':lr,
-    'sqi':sqi
+    'sqi':sqi,
+    'save_path':save_path
     }
     ,
         {
@@ -175,7 +191,8 @@ def config_list():
     'windows':[ecg_window,abp_window,eeg_window],
     'channel_n':channel_n,
     'lr':lr,
-    'sqi':sqi
+    'sqi':sqi,
+    'save_path':save_path
     }
     ,
 
@@ -187,7 +204,8 @@ def config_list():
     'windows':[abp_window],
     'channel_n':channel_n,
     'lr':lr,
-    'sqi':sqi
+    'sqi':sqi,
+    'save_path':save_path
     }
     ,    
         {
@@ -197,7 +215,8 @@ def config_list():
     'windows':[abp_window,eeg_window],
     'channel_n':channel_n,
     'lr':lr,
-    'sqi':sqi
+    'sqi':sqi,
+    'save_path':save_path
     }
     ,
         {
@@ -207,7 +226,8 @@ def config_list():
     'windows':[abp_window,ecg_window],
     'channel_n':channel_n,
     'lr':lr,
-    'sqi':sqi
+    'sqi':sqi,
+    'save_path':save_path
     }
     ,
         {
@@ -217,7 +237,8 @@ def config_list():
     'windows':[ecg_window,abp_window,eeg_window],
     'channel_n':channel_n,
     'lr':lr,
-    'sqi':sqi
+    'sqi':sqi,
+    'save_path':save_path
     }
     ,
 

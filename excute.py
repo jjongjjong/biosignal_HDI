@@ -12,7 +12,6 @@ import math
 import shutil
 
 def excute(config):
-    torch.cuda.ipc_collect()
     torch.cuda.empty_cache()
     torch.manual_seed(1)
 
@@ -36,8 +35,8 @@ def excute(config):
     
     save_path = make_save_folder(config)
     print(save_path)
-    shutil.copytree('/home/jjong/jjong/workplace/datathon_2019/pyfile',os.path.join(save_path,'pyfile'))
-
+    shutil.copytree('./',os.path.join(save_path,'pyfile'))
+    #/ home / jjong / jjong / workplace / datathon_2019 / pyfile
     print('Settings: {}M_{}'.format(config['time_point'],'_'.join(config['waves'])))
     for epoch in range(epochs):
         model.train()
@@ -63,7 +62,7 @@ def excute(config):
                 print('[{}epoch][{}/{}iter][loss:{}]'.format(epoch,idx,len(tr_dataloader),loss.item()))
             
             tr_target_digit.extend(y.cpu().numpy().ravel().tolist())
-            tr_pred_digit.extend(output.max(axis=1)[1].cpu().numpy().tolist())
+            tr_pred_digit.extend(output.max(dim=1)[1].cpu().numpy().tolist())
             tr_pred_prob.extend(output[:,1].detach().cpu().numpy().tolist())
             
         else: 
@@ -98,7 +97,7 @@ def excute(config):
 
                 output = model(X)
                 vd_target_digit.extend(y.cpu().numpy().ravel().tolist())
-                vd_pred_digit.extend(output.max(axis=1)[1].cpu().numpy().tolist())
+                vd_pred_digit.extend(output.max(dim=1)[1].cpu().numpy().tolist())
                 vd_pred_prob.extend(output[:,1].detach().cpu().numpy().tolist())
                 
             else:
@@ -144,7 +143,7 @@ def excute(config):
 
                 output = model(X)
                 te_target_digit.extend(y.cpu().numpy().ravel().tolist())
-                te_pred_digit.extend(output.max(axis=1)[1].cpu().numpy().tolist())
+                te_pred_digit.extend(output.max(dim=1)[1].cpu().numpy().tolist())
                 te_pred_prob.extend(output[:,1].detach().cpu().numpy().tolist())
             else:
                 print('-----------< Test Result >----------------')

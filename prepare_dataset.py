@@ -66,10 +66,21 @@ class biosignal_dataset(Dataset):
 
 def prepare_dataset(time_point,batch_size,sqi):
 
+    if os.name =='posix': #ubuntu
+        list_dir = '~/jjong/workplace/datathon_2019/data/train_test_split/version2/'
+        data_dir = '/mnt/storage2/datathon2019_3/npz_wave/'
+    elif os.name =='nt': #window
+        list_dir ='E:\\Jupyter_notebook\\JJH\dataStorage\\HDI\\train_test_split'
+        data_dir = 'E:\\Jupyter_notebook\\JJH\\dataStorage\\HDI\\npz_wave'
+    else:
+        print('check os name')
+        raise OSError
+    print(list_dir)
+    print(data_dir)
 
-    train_df = pd.read_csv('~/jjong/workplace/datathon_2019/data/train_test_split/version2/{}M_abp_{}_ecg_{}_eeg_{}_train.csv'.format(time_point,*sqi),index_col=0)#.sample(n=500, random_state=1)
-    valid_df = pd.read_csv('~/jjong/workplace/datathon_2019/data/train_test_split/version2/{}M_abp_{}_ecg_{}_eeg_{}_val.csv'.format(time_point,*sqi),index_col=0)#.sample(n=500, random_state=1)
-    test_df  = pd.read_csv('~/jjong/workplace/datathon_2019/data/train_test_split/version2/{}M_abp_{}_ecg_{}_eeg_{}_test.csv'.format(time_point,*sqi),index_col=0)#.sample(n=500, random_state=1)
+    train_df = pd.read_csv(os.path.join(list_dir,'{}M_abp_{}_ecg_{}_eeg_{}_train.csv'.format(time_point,*sqi)),index_col=0)#.sample(n=500, random_state=1)
+    valid_df = pd.read_csv(os.path.join(list_dir,'{}M_abp_{}_ecg_{}_eeg_{}_val.csv'.format(time_point,*sqi)),index_col=0)#.sample(n=500, random_state=1)
+    test_df  = pd.read_csv(os.path.join(list_dir,'{}M_abp_{}_ecg_{}_eeg_{}_test.csv'.format(time_point,*sqi)),index_col=0)#.sample(n=500, random_state=1)
     #15M_abp_0.30_ecg_0.30_eeg_0.30_train.csv
     #train_df, valid_df,_, _  = train_test_split(train_df,train_df.label,test_size=0.2)
  
@@ -79,9 +90,9 @@ def prepare_dataset(time_point,batch_size,sqi):
     train_df = pd.concat([train_df]+[train_df_e]*unbalance_rate)
 
 
-    tr_dataset = biosignal_dataset('/mnt/storage2/datathon2019_3/npz_wave/',train_df,time_point)
-    vd_dataset = biosignal_dataset('/mnt/storage2/datathon2019_3/npz_wave/',valid_df,time_point)
-    te_dataset = biosignal_dataset('/mnt/storage2/datathon2019_3/npz_wave/',test_df,time_point)
+    tr_dataset = biosignal_dataset(data_dir,train_df,time_point)
+    vd_dataset = biosignal_dataset(data_dir,valid_df,time_point)
+    te_dataset = biosignal_dataset(data_dir,test_df,time_point)
 
     tr_dataloader = DataLoader(tr_dataset,batch_size=batch_size,shuffle=True,num_workers=1,drop_last=True)
     vd_dataloader = DataLoader(vd_dataset,batch_size=batch_size*2,shuffle=False,num_workers=1,drop_last=False)

@@ -15,7 +15,7 @@ def make_save_folder(config):
     now = datetime.datetime.now()
     time_str = datetime.datetime.strftime(now,'%Y%m%d_%H%M%S')
     folder_name = '{}M_{}_{}'.format(config['time_point'],time_str,'_'.join(config['waves']))
-    save_path = os.path.join('/home/jjong/jjong/workplace/datathon_2019/save',folder_name)
+    save_path = os.path.join(config['save_path'],folder_name)
     pathlib.Path(save_path).mkdir(exist_ok=True,parents=True)
     pathlib.Path(os.path.join(save_path,'models')).mkdir(exist_ok=True,parents=True)
     return save_path
