@@ -66,6 +66,7 @@ class biosignal_dataset(Dataset):
 
 def prepare_dataset(time_point,batch_size,sqi):
 
+
     train_df = pd.read_csv('~/jjong/workplace/datathon_2019/data/train_test_split/version2/{}M_abp_{}_ecg_{}_eeg_{}_train.csv'.format(time_point,*sqi),index_col=0)#.sample(n=500, random_state=1)
     valid_df = pd.read_csv('~/jjong/workplace/datathon_2019/data/train_test_split/version2/{}M_abp_{}_ecg_{}_eeg_{}_val.csv'.format(time_point,*sqi),index_col=0)#.sample(n=500, random_state=1)
     test_df  = pd.read_csv('~/jjong/workplace/datathon_2019/data/train_test_split/version2/{}M_abp_{}_ecg_{}_eeg_{}_test.csv'.format(time_point,*sqi),index_col=0)#.sample(n=500, random_state=1)
