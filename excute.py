@@ -59,7 +59,7 @@ def excute(config):
             
             total_loss += loss.item()
             if idx%50==0:
-                print('[{}epoch][{}/{}iter][loss:{}]'.format(epoch,idx,len(tr_dataloader),loss.item()))
+                print('{}[{}epoch][{}/{}iter][loss:{}]'.format(config['device'],epoch,idx,len(tr_dataloader),loss.item()))
             
             tr_target_digit.extend(y.cpu().numpy().ravel().tolist())
             tr_pred_digit.extend(output.max(dim=1)[1].cpu().numpy().tolist())
